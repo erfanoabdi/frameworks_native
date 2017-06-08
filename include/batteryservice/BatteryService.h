@@ -52,6 +52,8 @@ enum {
     BATTERY_PROP_CURRENT_AVG = 3, // equals BatteryProperty.CURRENT_AVG constant
     BATTERY_PROP_CAPACITY = 4, // equals BatteryProperty.CAPACITY constant
     BATTERY_PROP_ENERGY_COUNTER = 5, // equals BatteryProperty.ENERGY_COUNTER constant
+    BATTERY_PROP_CHARGE_FULL = 6,
+    BATTERY_PROP_MOD_CHARGE_FULL = 7,
 };
 
 struct BatteryProperties {
@@ -71,6 +73,11 @@ struct BatteryProperties {
     int batteryFullCharge;
     int batteryChargeCounter;
     String8 batteryTechnology;
+
+    int modLevel;
+    int modStatus;
+    int modType;
+    int modFlag;
 
     bool dockBatterySupported;
     bool chargerDockAcOnline;

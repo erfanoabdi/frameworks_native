@@ -45,6 +45,11 @@ status_t BatteryProperties::readFromParcel(Parcel* p) {
     batteryChargeCounter = p->readInt32();
     batteryTechnology = String8((p->readString16()).string());
 
+    modLevel = p->readInt32();
+    modStatus = p->readInt32();
+    modType = p->readInt32();
+    modFlag = p->readInt32();
+
     dockBatterySupported = p->readInt32() == 1 ? true : false;
     if (dockBatterySupported) {
         chargerDockAcOnline = p->readInt32() == 1 ? true : false;
@@ -82,6 +87,11 @@ status_t BatteryProperties::writeToParcel(Parcel* p) const {
     p->writeInt32(batteryTemperature);
     p->writeInt32(batteryChargeCounter);
     p->writeString16(String16(batteryTechnology));
+
+    p->writeInt32(modLevel);
+    p->writeInt32(modStatus);
+    p->writeInt32(modType);
+    p->writeInt32(modFlag);
 
     p->writeInt32(dockBatterySupported ? 1 : 0);
     if (dockBatterySupported) {
